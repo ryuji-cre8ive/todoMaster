@@ -1,13 +1,115 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body{
+  background: #312e96;
+  color: white;
+}
+.App{
+  width: 400px;
+  margin: 0 auto;
+  text-align: left;
+  margin-top: 10em;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+label{
+  display: block;
+  text-align: left;
+  color: white;
+  font-size: .875em;
+}
+
+form .text-input{
+    overflow: hidden;  
+     margin-bottom: .875em;
+}
+  
+form input[type="text"],
+form input[type="description"]{
+    width: 100%;
+    padding: 1em 0 12px;
+    padding-left: 0;
+    background: none;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 400;
+    border: none;
+    border-bottom: 1px solid #999;
+    
+}        
+    /*Some sibling magic happens */
+form input[type="description"]:focus + .separator {
+  transform: scaleX(1) translateY(-2px);   
+  opacity: 1;
+}
+  
+form input[type="submit"]{
+    color: white;
+    background: #3599FF;
+    padding: 1em 1.4em;
+    font-size: 1.2em;
+    border:none;
+    border-radius: 10px;
+}
+.separator {
+  height:3px;
+  width: 100%;
+  background: #68B3FF;
+  display: block;
+  transform: scaleX(0) translateY(-2px);
+  transform-origin: 50%;
+  opacity: 0;
+  transition: all .15s linear;
+}
+button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+  color: white;
+  font-size: 17px;
+}
+.form{
+  text-align: center;
+}
+.form input{
+  width: 300px;
+  height: 50px;
+  outline: none;
+  font-size: 20px;
+  display: block;
+  appearance: none;
+}
+
+.form textarea{
+  width: 300px;
+  height: 50px;
+  font-size: 20px;
+  outline: none;
+  display: block;
+}
+
+.title{
+  display: block;
+}
+.description{
+  display: block;
+}
+
+.form-button{
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+}
+.form-button:hover{
+  background: #67c5ff;
+  color: white;
+}
+
+.todoListItem{
+  margin: 20px;
+  font-size: 20px;
 }
