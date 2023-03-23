@@ -1,7 +1,14 @@
 import React from 'react';
 import './index.css';
 
-class TodoListItem extends React.Component{
+interface TodoListItemProps {
+  title: string;
+  description: string;
+  [key: string]: any;
+}
+
+
+class TodoListItem extends React.Component<TodoListItemProps>{
   render(){
     const {
       title,
@@ -11,8 +18,8 @@ class TodoListItem extends React.Component{
     return (
       <div>
         <div className="todoListItem" {...props}>
-          <dev className="title">Title: {title}</dev>
-          <dev className="description">Desc: {description}</dev>
+          <div className="title">Title: {title}</div>
+          <div className="description">Desc: {description}</div>
         </div>
       </div>
     );

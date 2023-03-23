@@ -1,22 +1,29 @@
 import React, {Component} from 'react';
 import './index.css';
 import TodoListItem from './todoListItem'
-import How2Us from './use.js'
+import How2Us from './use.tsx'
+
+interface Todo {
+  title: string,
+  description: string
+}
 
 class App extends Component {
   state = {
-    todoList: []
+    todoList: [] as any
   }
   render(){
     return (
       <div className="App">
         <h1>TodoMaster</h1>
-        <form className="form" onSubmit={ e => {
+        <form className="form" onSubmit={ (e: React.FormEvent<HTMLFormElement>): void => {
           e.preventDefault();
 
-          const titleElement = e.target.elements["title"];
-          const descriptionElement = e.target.elements["description"];
-
+          const titleElement = (e.target as HTMLFormElement).elements[("title" as any)] as HTMLInputElement;
+          const descriptionElement = (e.target as HTMLFormElement).elements[("description" as any)] as HTMLInputElement;
+          if (!titleElement.value && !descriptionElement.value) {
+            return
+          }
           this.setState({
             todoList: this.state.todoList.concat({
               title: titleElement.value,
@@ -28,26 +35,26 @@ class App extends Component {
             descriptionElement.value = "";
           });
         }}>
-          <label for="title">Title</label>
+          <label htmlFor="title">Title</label>
           <input id="title" placeholder="" />
-          <span class="separator"> </span>
-          <label for="description">description</label>
+          <span className="separator"> </span>
+          <label htmlFor="description">description</label>
           <textarea id="description" placeholder="" />
-          <span class="separator"> </span>
+          <span className="separator"> </span>
           <div className="form-button">
             <button type="submit">Register</button>
           </div>
           
         </form>
         <div>
-          {this.state.todoList.map(todo => (
+          {this.state.todoList.map((todo: Todo) => (
             <div>
               <TodoListItem key={todo.title} title={todo.title} description={todo.description} 
                 onClick={() => {
                   let result = window.confirm('Do you want to delete?');
                   if (result) {
                     this.setState({
-                      todoList: this.state.todoList.filter(x => x !== todo)
+                      todoList: this.state.todoList.filter((x: any) => x !== todo)
                     })
                   } else {
                     return;
